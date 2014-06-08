@@ -13,5 +13,4 @@ class AndroidMap {
 
   var harvestables : mutable.Buffer[Attribute] = null
   var entrables : mutable.Buffer[Attribute] = null
-  var portals : mutable.Buffer[Attribute] = null
 }

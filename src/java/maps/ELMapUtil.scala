@@ -75,16 +75,6 @@ object ELMapUtil {
         attribute.y = in.readInt
         attribute.imgId = in.readInt
       }
-
-      val portalsCount: Int = in.readInt
-      portals = new ArrayBuffer[Attribute](portalsCount)
-      for(i <- 0 to portalsCount - 1) {
-        var id = in.readInt
-        val attribute: Attribute = elMap.attributes.find(a => a.id == id).get
-        portals += attribute
-        attribute.x = in.readInt
-        attribute.y = in.readInt
-      }
     }
   }
 
@@ -130,18 +120,6 @@ object ELMapUtil {
         }
       }
 
-
-      val portalsCount: Int = in.readInt
-      portals = new ArrayBuffer[Attribute](portalsCount)
-      for(i <- 0 to portalsCount - 1) {
-        portals += new Attribute {
-          var id: Int = in.readInt
-          var x: Int = in.readInt
-          var y: Int = in.readInt
-          var imgId: Int = _
-          var file: String = _
-        }
-      }
     }
   }
 
@@ -155,8 +133,7 @@ object ELMapUtil {
       heightMap = elMap.heightMap
 
       harvestables = elMap.attributes.filter(a => Harvestables.isHarvestable(a)).toBuffer
-      entrables = elMap.attributes.filter(a => Entrables.isEntrable(a) || a.id == 385 || a.id == 8).toBuffer
-      portals = elMap.attributes.filter(a => a.file == "portal1.e3d").toBuffer
+      entrables = elMap.attributes.filter(a => Entrables.isEntrable(a)/* || a.id == 4378 || a.id == 4391*/).toBuffer
 
       harvestables.foreach(a => a.imgId = Harvestables.imageId(a.file))
     }
@@ -183,12 +160,6 @@ object ELMapUtil {
       out.writeInt(harvestable.x)
       out.writeInt(harvestable.y)
       out.writeInt(harvestable.imgId)
-    }
-    out.writeInt(map.portals.size)
-    for(portal <- map.portals) {
-      out.writeInt(portal.id)
-      out.writeInt(portal.x)
-      out.writeInt(portal.y)
     }
     out.close()
   }

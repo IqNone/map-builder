@@ -66,10 +66,6 @@ object mapView extends Component {
       drawHarvestable(g, harvestable.imgId, zoom * harvestable.x, height - zoom * harvestable.y - zoom, zoom)
     }
 
-    for(portal <- androidMap.portals) {
-      drawPortal(g, zoom * portal.x, height - zoom * portal.y - zoom, zoom)
-    }
-
 //    g.setColor(Color.WHITE)
 //
 //    for(i <- 1 to androidMap.width - 1) {
