@@ -200,7 +200,6 @@ object mapView extends Component {
 
     for(i <- 1 to 27) {
       imgs(i - 1) = ImageIO.read(this.getClass.getClassLoader.getResource("items/items" + i + ".png"))
-      //imgs(i - 1) = ImageIO.read(this.getClass.getClassLoader.getResource("/Users/u0073403/Downloads/map-builder-master/src/resources/items/items" + i + ".png"))
     }
 
     imgs

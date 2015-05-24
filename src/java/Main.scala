@@ -124,10 +124,8 @@ object Main extends SimpleSwingApplication{
         if(standard.selected) {
           var name = standardList.list.selection.items(0).toString
           var elMap = ELMapUtil.readFromZippedMap(this.getClass.getClassLoader.getResourceAsStream("maps/" + name + ".elm.gz"), name)
-          //var elMap = ELMapUtil.readFromZippedMap(this.getClass.getClassLoader.getResourceAsStream("/Users/u0073403/Downloads/map-builder-master/src/resources/maps/" + name + ".elm.gz"), name)
           var androidMap = ELMapUtil.fromElMap(elMap)
           var image = ImageIO.read(getClass.getClassLoader.getResource("images/" + name + ".png"))
-          //var image = ImageIO.read(getClass.getClassLoader.getResource("/Users/u0073403/Downloads/map-builder-master/src/resources/images/" + name + ".png"))
           mapEditor.load(elMap, androidMap, image)
         }
       }
@@ -190,10 +188,8 @@ object Main extends SimpleSwingApplication{
           var file = new File(fileChoosers.selected(0))
           var name = file.getName.replace(".elma", "")
           var elMap = ELMapUtil.readFromZippedMap(this.getClass.getClassLoader.getResourceAsStream("maps/" + name + ".elm.gz"), name)
-          //var elMap = ELMapUtil.readFromZippedMap(this.getClass.getClassLoader.getResourceAsStream("/Users/u0073403/Downloads/map-builder-master/src/resources/maps/" + name + ".elm.gz"), name)
           var androidMap = ELMapUtil.fromInputStream(new FileInputStream(file), elMap)
           var image = ImageIO.read(getClass.getClassLoader.getResource("images/" + name + ".png"))
-          //var image = ImageIO.read(getClass.getClassLoader.getResource("/Users/u0073403/Downloads/map-builder-master/src/resources/images/" + name + ".png"))
           mapEditor.load(elMap, androidMap, image)
         }
       }
@@ -253,7 +249,6 @@ object Main extends SimpleSwingApplication{
 
   def loadIcon(map : String) : Icon = {
     val url: URL = this.getClass.getResource("thumbs/" + map + ".png")
-    //val url: URL = this.getClass.getResource("/Users/u0073403/Downloads/map-builder-master/src/resources/thumbs/" + map + ".png")
     if (url == null) null else new ImageIcon(url)
   }
 
